@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<form action="/login" method="post">
+
+    <div class="md-form">
+      {{ form.username(class_="form-control") }}
+      {{ form.username.label }}
+    </div>
+    <div class="md-form">
+      {{ form.password(class_="form-control") }}
+      {{ form.password.label }}
+    </div>
+
+  <button class="btn blue lighten-4" type="submit" name="action">Войти
+  </button>
+        
+</form>
+{% endblock content %}

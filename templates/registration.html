@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <form action="/registration" method="post">
+        <div class="md-form">
+            {{ form.email(class_="form-control") }}
+            {{ form.email.label }}
+        </div>
+        <div class="md-form">
+            {{ form.username(class_="form-control") }}
+            {{ form.username.label }}
+        </div>
+        <div class="md-form">
+            {{ form.password(class_="form-control") }}
+            {{ form.password.label }}
+        </div>
+        <div class="md-form">
+            {{ form.confirm(class_="form-control") }}
+            {{ form.confirm.label }}
+        </div>
+        <button type="submit" class="btn blue lighten-4">Отправить</button>
+    </form>
+{% endblock content %}

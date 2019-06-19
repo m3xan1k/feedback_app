@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <form action="/feedback" method="post">
+        <div class="md-form">
+            {{ form.title(class_="form-control") }}
+            {{ form.title.label }}
+        </div>
+        <div class="md-form">
+            {{ form.text(class_="md-textarea form-control") }}
+            {{ form.text.label }}
+        </div>
+        <button type="submit" class="btn blue lighten-4">Отправить</button>
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock scripts %}
