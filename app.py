@@ -6,6 +6,7 @@ from passlib.hash import sha256_crypt
 from rq import Queue
 from redis import Redis
 from mail import send_mail
+import os
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -13,6 +14,9 @@ db = SQLAlchemy(app)
 
 redis_conn = Redis()
 q = Queue(connection=redis_conn)
+
+mail_user = os.environ.get('MAIL_USER')  
+mail_password = os.environ.get('MAIL_PASSWORD')
 
 
 class User(UserMixin, db.Model):
@@ -73,7 +77,7 @@ def feedback():
         db.session.add(feedback)
         db.session.commit()
 
-        q.enqueue(send_mail, args=(title, text))
+        q.enqueue(send_mail, args=(mail_user, mail_password, title, text))
 
         flash('Заявка отправлена. Спасибо', category='success')
 

@@ -1,3 +1,5 @@
-SQLALCHEMY_DATABASE_URI = 'mysql://username:password@host/database'
+import os
+
+SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = 'super secret key'
